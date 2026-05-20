@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>标志混合器 - 50 个有意思的网站</title>
-    <meta name="description" content="组合品牌词、形状和情绪，生成 logo 方向。" />
+    <meta name="description" content="输入品牌词，生成几何标志和一句品牌语。" />
     <link rel="stylesheet" href="../../assets/style.css" />
-    <script>window.SITE_CONFIG = {"slug": "logo-mixer", "title": "标志混合器", "category": "设计美学", "description": "组合品牌词、形状和情绪，生成 logo 方向。", "mark": "标", "accent": "#7f1d1d", "warm": "#fb7185", "cool": "#fbbf24", "keywords": ["品牌", "图形", "识别", "情绪", "符号"], "items": [{"title": "品牌 · 生成卡", "body": "围绕“品牌”给出一个可立即执行的小模块，适合在 标志混合器 中作为下一步行动。", "tag": "品牌", "score": 64}, {"title": "图形 · 筛选卡", "body": "围绕“图形”给出一个可立即执行的小模块，适合在 标志混合器 中作为下一步行动。", "tag": "图形", "score": 75}, {"title": "识别 · 收藏卡", "body": "围绕“识别”给出一个可立即执行的小模块，适合在 标志混合器 中作为下一步行动。", "tag": "识别", "score": 86}, {"title": "情绪 · 复盘卡", "body": "围绕“情绪”给出一个可立即执行的小模块，适合在 标志混合器 中作为下一步行动。", "tag": "情绪", "score": 97}, {"title": "符号 · 导出卡", "body": "围绕“符号”给出一个可立即执行的小模块，适合在 标志混合器 中作为下一步行动。", "tag": "符号", "score": 71}, {"title": "品牌 · 组合卡", "body": "围绕“品牌”给出一个可立即执行的小模块，适合在 标志混合器 中作为下一步行动。", "tag": "品牌", "score": 82}, {"title": "图形 · 校准卡", "body": "围绕“图形”给出一个可立即执行的小模块，适合在 标志混合器 中作为下一步行动。", "tag": "图形", "score": 93}, {"title": "识别 · 归档卡", "body": "围绕“识别”给出一个可立即执行的小模块，适合在 标志混合器 中作为下一步行动。", "tag": "识别", "score": 67}], "steps": ["选择一个核心词：品牌", "用生成器得到 3 个关于图形的方向", "收藏最想推进的卡片，并写下识别记录", "导出本地工作台，作为下一次继续的入口"], "prompts": ["把品牌改成一个 15 分钟任务", "给图形增加一个反差角度", "围绕识别生成三个版本", "把情绪做成清单", "用符号设计一个收尾动作", "写一个更温柔的提示", "压缩成一句话", "加入一个可衡量指标"], "actions": ["立刻做一版", "留到明早", "发给朋友看", "拆成三步", "加入收藏", "写进复盘"], "repoUrl": "https://github.com/qqemail0/fifty-fun-websites-lab", "homeUrl": "../../index.html", "pageUrl": "https://qqemail0.github.io/fifty-fun-websites-lab/sites/logo-mixer/"};</script>
+    <script>window.SITE_CONFIG = {"slug": "logo-mixer", "title": "标志混合器", "category": "设计美学", "description": "输入品牌词，生成几何标志和一句品牌语。", "kind": "logo", "skin": "atelier", "mark": "标", "accent": "#7f1d1d", "warm": "#fb7185", "cool": "#fbbf24", "keywords": ["品牌", "图形", "识别", "情绪", "符号"], "index": 32, "pageUrl": "https://qqemail0.github.io/fifty-fun-websites-lab/sites/logo-mixer/", "repoUrl": "https://github.com/qqemail0/fifty-fun-websites-lab", "cards": [{"title": "品牌实验", "text": "围绕“品牌”做一个小步骤，保存结果后再进入下一轮。", "score": 82}, {"title": "图形实验", "text": "围绕“图形”做一个小步骤，保存结果后再进入下一轮。", "score": 91}, {"title": "识别实验", "text": "围绕“识别”做一个小步骤，保存结果后再进入下一轮。", "score": 52}, {"title": "情绪实验", "text": "围绕“情绪”做一个小步骤，保存结果后再进入下一轮。", "score": 61}, {"title": "符号实验", "text": "围绕“符号”做一个小步骤，保存结果后再进入下一轮。", "score": 70}], "steps": ["先选择一个核心词：品牌", "用页面里的专属工具生成关于图形的结果", "把最有价值的一条保存到本地工作台", "导出 JSON，用作下一次继续的起点"]};</script>
     <script src="../../assets/site.js" defer></script>
   </head>
-  <body class="site-page" style="--accent:#7f1d1d;--warm:#fb7185;--cool:#fbbf24;">
-    <canvas class="ambient-canvas" aria-hidden="true"></canvas>
+  <body class="site-page skin-atelier" style="--accent:#7f1d1d;--warm:#fb7185;--cool:#fbbf24;">
+    <div class="grain" aria-hidden="true"></div>
     <header class="topbar">
       <a class="brand" href="../../index.html"><span class="brand-mark">标</span><span>50 Sites Lab</span></a>
       <nav class="top-actions">
@@ -18,9 +18,40 @@
         <a class="repo-orb" href="https://github.com/qqemail0/fifty-fun-websites-lab" target="_blank" rel="noreferrer" aria-label="GitHub 开源地址">GH</a>
       </nav>
     </header>
-    <main id="app" class="site-shell"></main>
+    <main class="site-shell" data-kind="logo" data-skin="atelier">
+      <section class="site-hero hero-4">
+        <div class="hero-copy">
+          <p class="eyebrow">设计美学 / logo</p>
+          <h1>标志混合器</h1>
+          <p class="lead">输入品牌词，生成几何标志和一句品牌语。</p>
+          <div class="keyword-strip"><span>品牌</span><span>图形</span><span>识别</span><span>情绪</span><span>符号</span></div>
+        </div>
+        <aside class="signature-panel" aria-label="视觉标识">
+          <b>标</b>
+          <div class="signature-grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </aside>
+      </section>
+      <section id="toolMount" class="tool-mount" aria-label="标志混合器 工具"></section>
+      <section class="method-grid">
+        <article class="method-card">
+          <small>玩法</small>
+          <h2>这不是换皮模板</h2>
+          <p>此页面使用 <strong>logo</strong> 工具类型和 <strong>atelier</strong> 视觉皮肤，交互、版式和控件都按主题重做。</p>
+        </article>
+        <article class="method-card">
+          <small>本地保存</small>
+          <h2>浏览器工作台</h2>
+          <p>收藏、笔记、生成记录都保存在当前浏览器，可导出 JSON，不需要后端。</p>
+        </article>
+        <article class="method-card">
+          <small>步骤</small>
+          <h2>怎么用</h2>
+          <ol><li>先选择一个核心词：品牌</li><li>用页面里的专属工具生成关于图形的结果</li><li>把最有价值的一条保存到本地工作台</li><li>导出 JSON，用作下一次继续的起点</li></ol>
+        </article>
+      </section>
+    </main>
     <footer class="source-footer">
-      <div><strong>标志混合器</strong><span>设计美学 · 本地数据保存在当前浏览器。</span></div>
+      <div><strong>标志混合器</strong><span>设计美学 · 独立工具页 · GitHub Pages 静态部署。</span></div>
       <a class="source-footer-link" href="https://github.com/qqemail0/fifty-fun-websites-lab" target="_blank" rel="noreferrer">开源项目</a>
     </footer>
   </body>

@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>城市声音漫步 - 50 个有意思的网站</title>
-    <meta name="description" content="记录街角声音，并生成一条散步路线。" />
+    <meta name="description" content="记录街角声音，生成一条听觉散步路线。" />
     <link rel="stylesheet" href="../../assets/style.css" />
-    <script>window.SITE_CONFIG = {"slug": "city-soundwalk", "title": "城市声音漫步", "category": "奇想实验", "description": "记录街角声音，并生成一条散步路线。", "mark": "声", "accent": "#0e7490", "warm": "#a7f3d0", "cool": "#f9a8d4", "keywords": ["声音", "街角", "路线", "节拍", "记忆"], "items": [{"title": "声音 · 生成卡", "body": "围绕“声音”给出一个可立即执行的小模块，适合在 城市声音漫步 中作为下一步行动。", "tag": "声音", "score": 79}, {"title": "街角 · 筛选卡", "body": "围绕“街角”给出一个可立即执行的小模块，适合在 城市声音漫步 中作为下一步行动。", "tag": "街角", "score": 90}, {"title": "路线 · 收藏卡", "body": "围绕“路线”给出一个可立即执行的小模块，适合在 城市声音漫步 中作为下一步行动。", "tag": "路线", "score": 64}, {"title": "节拍 · 复盘卡", "body": "围绕“节拍”给出一个可立即执行的小模块，适合在 城市声音漫步 中作为下一步行动。", "tag": "节拍", "score": 75}, {"title": "记忆 · 导出卡", "body": "围绕“记忆”给出一个可立即执行的小模块，适合在 城市声音漫步 中作为下一步行动。", "tag": "记忆", "score": 86}, {"title": "声音 · 组合卡", "body": "围绕“声音”给出一个可立即执行的小模块，适合在 城市声音漫步 中作为下一步行动。", "tag": "声音", "score": 97}, {"title": "街角 · 校准卡", "body": "围绕“街角”给出一个可立即执行的小模块，适合在 城市声音漫步 中作为下一步行动。", "tag": "街角", "score": 71}, {"title": "路线 · 归档卡", "body": "围绕“路线”给出一个可立即执行的小模块，适合在 城市声音漫步 中作为下一步行动。", "tag": "路线", "score": 82}], "steps": ["选择一个核心词：声音", "用生成器得到 3 个关于街角的方向", "收藏最想推进的卡片，并写下路线记录", "导出本地工作台，作为下一次继续的入口"], "prompts": ["把声音改成一个 15 分钟任务", "给街角增加一个反差角度", "围绕路线生成三个版本", "把节拍做成清单", "用记忆设计一个收尾动作", "写一个更温柔的提示", "压缩成一句话", "加入一个可衡量指标"], "actions": ["立刻做一版", "留到明早", "发给朋友看", "拆成三步", "加入收藏", "写进复盘"], "repoUrl": "https://github.com/qqemail0/fifty-fun-websites-lab", "homeUrl": "../../index.html", "pageUrl": "https://qqemail0.github.io/fifty-fun-websites-lab/sites/city-soundwalk/"};</script>
+    <script>window.SITE_CONFIG = {"slug": "city-soundwalk", "title": "城市声音漫步", "category": "奇想实验", "description": "记录街角声音，生成一条听觉散步路线。", "kind": "soundwalk", "skin": "city", "mark": "声", "accent": "#0e7490", "warm": "#a7f3d0", "cool": "#f9a8d4", "keywords": ["声音", "街角", "路线", "节拍", "记忆"], "index": 50, "pageUrl": "https://qqemail0.github.io/fifty-fun-websites-lab/sites/city-soundwalk/", "repoUrl": "https://github.com/qqemail0/fifty-fun-websites-lab", "cards": [{"title": "声音实验", "text": "围绕“声音”做一个小步骤，保存结果后再进入下一轮。", "score": 76}, {"title": "街角实验", "text": "围绕“街角”做一个小步骤，保存结果后再进入下一轮。", "score": 85}, {"title": "路线实验", "text": "围绕“路线”做一个小步骤，保存结果后再进入下一轮。", "score": 94}, {"title": "节拍实验", "text": "围绕“节拍”做一个小步骤，保存结果后再进入下一轮。", "score": 55}, {"title": "记忆实验", "text": "围绕“记忆”做一个小步骤，保存结果后再进入下一轮。", "score": 64}], "steps": ["先选择一个核心词：声音", "用页面里的专属工具生成关于街角的结果", "把最有价值的一条保存到本地工作台", "导出 JSON，用作下一次继续的起点"]};</script>
     <script src="../../assets/site.js" defer></script>
   </head>
-  <body class="site-page" style="--accent:#0e7490;--warm:#a7f3d0;--cool:#f9a8d4;">
-    <canvas class="ambient-canvas" aria-hidden="true"></canvas>
+  <body class="site-page skin-city" style="--accent:#0e7490;--warm:#a7f3d0;--cool:#f9a8d4;">
+    <div class="grain" aria-hidden="true"></div>
     <header class="topbar">
       <a class="brand" href="../../index.html"><span class="brand-mark">声</span><span>50 Sites Lab</span></a>
       <nav class="top-actions">
@@ -18,9 +18,40 @@
         <a class="repo-orb" href="https://github.com/qqemail0/fifty-fun-websites-lab" target="_blank" rel="noreferrer" aria-label="GitHub 开源地址">GH</a>
       </nav>
     </header>
-    <main id="app" class="site-shell"></main>
+    <main class="site-shell" data-kind="soundwalk" data-skin="city">
+      <section class="site-hero hero-1">
+        <div class="hero-copy">
+          <p class="eyebrow">奇想实验 / soundwalk</p>
+          <h1>城市声音漫步</h1>
+          <p class="lead">记录街角声音，生成一条听觉散步路线。</p>
+          <div class="keyword-strip"><span>声音</span><span>街角</span><span>路线</span><span>节拍</span><span>记忆</span></div>
+        </div>
+        <aside class="signature-panel" aria-label="视觉标识">
+          <b>声</b>
+          <div class="signature-grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </aside>
+      </section>
+      <section id="toolMount" class="tool-mount" aria-label="城市声音漫步 工具"></section>
+      <section class="method-grid">
+        <article class="method-card">
+          <small>玩法</small>
+          <h2>这不是换皮模板</h2>
+          <p>此页面使用 <strong>soundwalk</strong> 工具类型和 <strong>city</strong> 视觉皮肤，交互、版式和控件都按主题重做。</p>
+        </article>
+        <article class="method-card">
+          <small>本地保存</small>
+          <h2>浏览器工作台</h2>
+          <p>收藏、笔记、生成记录都保存在当前浏览器，可导出 JSON，不需要后端。</p>
+        </article>
+        <article class="method-card">
+          <small>步骤</small>
+          <h2>怎么用</h2>
+          <ol><li>先选择一个核心词：声音</li><li>用页面里的专属工具生成关于街角的结果</li><li>把最有价值的一条保存到本地工作台</li><li>导出 JSON，用作下一次继续的起点</li></ol>
+        </article>
+      </section>
+    </main>
     <footer class="source-footer">
-      <div><strong>城市声音漫步</strong><span>奇想实验 · 本地数据保存在当前浏览器。</span></div>
+      <div><strong>城市声音漫步</strong><span>奇想实验 · 独立工具页 · GitHub Pages 静态部署。</span></div>
       <a class="source-footer-link" href="https://github.com/qqemail0/fifty-fun-websites-lab" target="_blank" rel="noreferrer">开源项目</a>
     </footer>
   </body>

@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>小型活动导演 - 50 个有意思的网站</title>
-    <meta name="description" content="为聚会、分享会和线上活动生成流程。" />
+    <meta name="description" content="生成活动流程、物料和主持提示。" />
     <link rel="stylesheet" href="../../assets/style.css" />
-    <script>window.SITE_CONFIG = {"slug": "event-planner", "title": "小型活动导演", "category": "社交协作", "description": "为聚会、分享会和线上活动生成流程。", "mark": "活", "accent": "#ea580c", "warm": "#fdba74", "cool": "#22c55e", "keywords": ["活动", "流程", "嘉宾", "物料", "氛围"], "items": [{"title": "活动 · 生成卡", "body": "围绕“活动”给出一个可立即执行的小模块，适合在 小型活动导演 中作为下一步行动。", "tag": "活动", "score": 83}, {"title": "流程 · 筛选卡", "body": "围绕“流程”给出一个可立即执行的小模块，适合在 小型活动导演 中作为下一步行动。", "tag": "流程", "score": 94}, {"title": "嘉宾 · 收藏卡", "body": "围绕“嘉宾”给出一个可立即执行的小模块，适合在 小型活动导演 中作为下一步行动。", "tag": "嘉宾", "score": 68}, {"title": "物料 · 复盘卡", "body": "围绕“物料”给出一个可立即执行的小模块，适合在 小型活动导演 中作为下一步行动。", "tag": "物料", "score": 79}, {"title": "氛围 · 导出卡", "body": "围绕“氛围”给出一个可立即执行的小模块，适合在 小型活动导演 中作为下一步行动。", "tag": "氛围", "score": 90}, {"title": "活动 · 组合卡", "body": "围绕“活动”给出一个可立即执行的小模块，适合在 小型活动导演 中作为下一步行动。", "tag": "活动", "score": 64}, {"title": "流程 · 校准卡", "body": "围绕“流程”给出一个可立即执行的小模块，适合在 小型活动导演 中作为下一步行动。", "tag": "流程", "score": 75}, {"title": "嘉宾 · 归档卡", "body": "围绕“嘉宾”给出一个可立即执行的小模块，适合在 小型活动导演 中作为下一步行动。", "tag": "嘉宾", "score": 86}], "steps": ["选择一个核心词：活动", "用生成器得到 3 个关于流程的方向", "收藏最想推进的卡片，并写下嘉宾记录", "导出本地工作台，作为下一次继续的入口"], "prompts": ["把活动改成一个 15 分钟任务", "给流程增加一个反差角度", "围绕嘉宾生成三个版本", "把物料做成清单", "用氛围设计一个收尾动作", "写一个更温柔的提示", "压缩成一句话", "加入一个可衡量指标"], "actions": ["立刻做一版", "留到明早", "发给朋友看", "拆成三步", "加入收藏", "写进复盘"], "repoUrl": "https://github.com/qqemail0/fifty-fun-websites-lab", "homeUrl": "../../index.html", "pageUrl": "https://qqemail0.github.io/fifty-fun-websites-lab/sites/event-planner/"};</script>
+    <script>window.SITE_CONFIG = {"slug": "event-planner", "title": "小型活动导演", "category": "社交协作", "description": "生成活动流程、物料和主持提示。", "kind": "event", "skin": "stage", "mark": "活", "accent": "#ea580c", "warm": "#fdba74", "cool": "#22c55e", "keywords": ["活动", "流程", "嘉宾", "物料", "氛围"], "index": 40, "pageUrl": "https://qqemail0.github.io/fifty-fun-websites-lab/sites/event-planner/", "repoUrl": "https://github.com/qqemail0/fifty-fun-websites-lab", "cards": [{"title": "活动实验", "text": "围绕“活动”做一个小步骤，保存结果后再进入下一轮。", "score": 90}, {"title": "流程实验", "text": "围绕“流程”做一个小步骤，保存结果后再进入下一轮。", "score": 51}, {"title": "嘉宾实验", "text": "围绕“嘉宾”做一个小步骤，保存结果后再进入下一轮。", "score": 60}, {"title": "物料实验", "text": "围绕“物料”做一个小步骤，保存结果后再进入下一轮。", "score": 69}, {"title": "氛围实验", "text": "围绕“氛围”做一个小步骤，保存结果后再进入下一轮。", "score": 78}], "steps": ["先选择一个核心词：活动", "用页面里的专属工具生成关于流程的结果", "把最有价值的一条保存到本地工作台", "导出 JSON，用作下一次继续的起点"]};</script>
     <script src="../../assets/site.js" defer></script>
   </head>
-  <body class="site-page" style="--accent:#ea580c;--warm:#fdba74;--cool:#22c55e;">
-    <canvas class="ambient-canvas" aria-hidden="true"></canvas>
+  <body class="site-page skin-stage" style="--accent:#ea580c;--warm:#fdba74;--cool:#22c55e;">
+    <div class="grain" aria-hidden="true"></div>
     <header class="topbar">
       <a class="brand" href="../../index.html"><span class="brand-mark">活</span><span>50 Sites Lab</span></a>
       <nav class="top-actions">
@@ -18,9 +18,40 @@
         <a class="repo-orb" href="https://github.com/qqemail0/fifty-fun-websites-lab" target="_blank" rel="noreferrer" aria-label="GitHub 开源地址">GH</a>
       </nav>
     </header>
-    <main id="app" class="site-shell"></main>
+    <main class="site-shell" data-kind="event" data-skin="stage">
+      <section class="site-hero hero-5">
+        <div class="hero-copy">
+          <p class="eyebrow">社交协作 / event</p>
+          <h1>小型活动导演</h1>
+          <p class="lead">生成活动流程、物料和主持提示。</p>
+          <div class="keyword-strip"><span>活动</span><span>流程</span><span>嘉宾</span><span>物料</span><span>氛围</span></div>
+        </div>
+        <aside class="signature-panel" aria-label="视觉标识">
+          <b>活</b>
+          <div class="signature-grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </aside>
+      </section>
+      <section id="toolMount" class="tool-mount" aria-label="小型活动导演 工具"></section>
+      <section class="method-grid">
+        <article class="method-card">
+          <small>玩法</small>
+          <h2>这不是换皮模板</h2>
+          <p>此页面使用 <strong>event</strong> 工具类型和 <strong>stage</strong> 视觉皮肤，交互、版式和控件都按主题重做。</p>
+        </article>
+        <article class="method-card">
+          <small>本地保存</small>
+          <h2>浏览器工作台</h2>
+          <p>收藏、笔记、生成记录都保存在当前浏览器，可导出 JSON，不需要后端。</p>
+        </article>
+        <article class="method-card">
+          <small>步骤</small>
+          <h2>怎么用</h2>
+          <ol><li>先选择一个核心词：活动</li><li>用页面里的专属工具生成关于流程的结果</li><li>把最有价值的一条保存到本地工作台</li><li>导出 JSON，用作下一次继续的起点</li></ol>
+        </article>
+      </section>
+    </main>
     <footer class="source-footer">
-      <div><strong>小型活动导演</strong><span>社交协作 · 本地数据保存在当前浏览器。</span></div>
+      <div><strong>小型活动导演</strong><span>社交协作 · 独立工具页 · GitHub Pages 静态部署。</span></div>
       <a class="source-footer-link" href="https://github.com/qqemail0/fifty-fun-websites-lab" target="_blank" rel="noreferrer">开源项目</a>
     </footer>
   </body>
