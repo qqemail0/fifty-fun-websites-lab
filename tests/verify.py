@@ -23,7 +23,7 @@ def main() -> None:
     assert_true(not (ROOT / "sites").exists(), "sites directory should be deleted")
     assert_true(not (ROOT / "assets" / "site.js").exists(), "site runtime should be deleted")
     assert_true(not (ROOT / "scripts" / "build_sites.py").exists(), "50-site generator should be deleted")
-    for phrase in ["历史网站导航", "之前生成过的网站", "访问网站", "查看源码"]:
+    for phrase in ["作品导航", "之前做过的网站", "项目目录", "访问网站", "查看源码"]:
         assert_true(phrase in index or phrase in (ROOT / "assets" / "home.js").read_text(encoding="utf-8"), f"missing phrase: {phrase}")
     for item in links:
         for key in ["title", "category", "description", "url", "repo"]:
