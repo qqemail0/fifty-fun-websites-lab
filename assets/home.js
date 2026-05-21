@@ -1,58 +1,68 @@
 const data = window.PORTAL_DATA;
+
 const $ = (id) => document.getElementById(id);
 
 document.addEventListener("DOMContentLoaded", () => {
-  Object.keys(data.categories).forEach((name) => {
-    const option = document.createElement("option");
-    option.value = name;
-    option.textContent = name;
-    $("categoryInput").append(option);
-  });
-  $("searchInput").addEventListener("input", renderSites);
-  $("categoryInput").addEventListener("change", renderSites);
-  renderSites();
+  buildCategories();
+  renderStats();
   renderArchive();
+  $("searchInput").addEventListener("input", renderArchive);
+  $("categoryInput").addEventListener("change", renderArchive);
 });
 
-function renderSites() {
-  const query = $("searchInput").value.trim().toLowerCase();
-  const category = $("categoryInput").value;
-  const sites = data.sites.filter((site) => {
-    const haystack = [site.title, site.category, site.kind, site.skin, site.description, ...(site.keywords || [])].join(" ").toLowerCase();
-    return (category === "全部" || site.category === category) && haystack.includes(query);
-  });
-  $("siteGrid").replaceChildren(...sites.map((site) => {
-    const node = document.createElement("a");
-    node.className = "site-card";
-    node.href = `sites/${site.slug}/`;
-    node.style.setProperty("--accent", site.accent);
-    node.style.setProperty("--warm", site.warm);
-    node.style.setProperty("--cool", site.cool);
-    node.innerHTML = `
-      <span class="kind-tag">${escapeHtml(site.category)} · ${escapeHtml(site.kind)}</span>
-      <h3>${escapeHtml(site.title)}</h3>
-      <p>${escapeHtml(site.description)}</p>
-      <div class="tag-list">${site.keywords.slice(0, 4).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}</div>
-    `;
-    return node;
+function buildCategories() {
+  const categories = [...new Set(data.links.map((item) => item.category))].sort((a, b) => a.localeCompare(b, "zh-CN"));
+  for (const category of categories) {
+    const option = document.createElement("option");
+    option.value = category;
+    option.textContent = category;
+    $("categoryInput").append(option);
+  }
+}
+
+function renderStats() {
+  $("siteCount").textContent = data.links.length;
+  const categories = [...new Set(data.links.map((item) => item.category))];
+  $("categoryBadges").replaceChildren(...categories.map((category) => {
+    const badge = document.createElement("span");
+    badge.textContent = category;
+    return badge;
   }));
 }
 
 function renderArchive() {
-  $("archiveGrid").replaceChildren(...data.previousLinks.map((item) => {
-    const node = document.createElement("article");
-    node.className = "archive-card";
-    node.innerHTML = `
-      <span class="kind-tag">${escapeHtml(item.category)}</span>
+  const query = $("searchInput").value.trim().toLowerCase();
+  const category = $("categoryInput").value;
+  const links = data.links.filter((item) => {
+    const haystack = [item.title, item.category, item.description, item.url, item.repo].join(" ").toLowerCase();
+    return (category === "全部" || item.category === category) && haystack.includes(query);
+  });
+  $("archiveGrid").replaceChildren(...links.map(renderCard));
+}
+
+function renderCard(item) {
+  const node = document.createElement("article");
+  node.className = "archive-card";
+  node.innerHTML = `
+    <span class="category">${escapeHtml(item.category)}</span>
+    <div>
       <h3>${escapeHtml(item.title)}</h3>
       <p>${escapeHtml(item.description)}</p>
-      <div class="mini-actions">
-        <a class="primary-link" href="${item.url}" target="_blank" rel="noreferrer">访问</a>
-        <a class="secondary-link" href="${item.repo}" target="_blank" rel="noreferrer">源码</a>
-      </div>
-    `;
-    return node;
-  }));
+    </div>
+    <div class="link-lines">
+      <span>${escapeHtml(item.url)}</span>
+      <span>${escapeHtml(item.repo)}</span>
+    </div>
+    <div class="card-actions">
+      <a class="primary-link" href="${escapeAttr(item.url)}" target="_blank" rel="noreferrer">访问网站</a>
+      <a class="secondary-link" href="${escapeAttr(item.repo)}" target="_blank" rel="noreferrer">查看源码</a>
+    </div>
+  `;
+  return node;
+}
+
+function escapeAttr(value) {
+  return String(value).replace(/"/g, "&quot;");
 }
 
 function escapeHtml(value) {

@@ -14,22 +14,21 @@ def assert_true(condition: bool, message: str) -> None:
 
 def main() -> None:
     index = (ROOT / "index.html").read_text(encoding="utf-8")
-    match = re.search(r"window\.PORTAL_DATA = (.*?);</script>", index)
+    match = re.search(r"window\.PORTAL_DATA = (.*?);\s*</script>", index, re.S)
     assert_true(bool(match), "portal data missing")
-    data = json.loads(match.group(1))
-    sites = data["sites"]
-    assert_true(len(sites) == 50, "site count must be 50")
-    assert_true(len({site["kind"] for site in sites}) >= 38, "not enough distinct tool types")
-    assert_true(len({site["skin"] for site in sites}) >= 18, "not enough visual skins")
-    assert_true(len(data["previousLinks"]) >= 10, "previous links missing")
-    for site in sites:
-        path = ROOT / "sites" / site["slug"] / "index.html"
-        assert_true(path.exists(), f"missing site page: {site['slug']}")
-        text = path.read_text(encoding="utf-8")
-        assert_true("repo-orb" in text and "source-footer-link" in text, f"source badge missing: {site['slug']}")
-        assert_true(f'data-kind="{site["kind"]}"' in text, f"kind missing: {site['slug']}")
-        assert_true(f'skin-{site["skin"]}' in text, f"skin missing: {site['slug']}")
-    for required in ["assets/style.css", "assets/site.js", "assets/home.js", ".github/workflows/pages.yml", "README.md", "docs/SITE_MAP.md"]:
+    data = json.loads(re.sub(r'([,{]\s*)([A-Za-z][A-Za-z0-9_]*)\s*:', r'\1"\2":', match.group(1)))
+    links = data.get("links", [])
+    assert_true(len(links) >= 10, "previous website links missing")
+    assert_true("sites" not in data, "50-site dataset should be removed")
+    assert_true(not (ROOT / "sites").exists(), "sites directory should be deleted")
+    assert_true(not (ROOT / "assets" / "site.js").exists(), "site runtime should be deleted")
+    assert_true(not (ROOT / "scripts" / "build_sites.py").exists(), "50-site generator should be deleted")
+    for phrase in ["历史网站导航", "之前生成过的网站", "访问网站", "查看源码"]:
+        assert_true(phrase in index or phrase in (ROOT / "assets" / "home.js").read_text(encoding="utf-8"), f"missing phrase: {phrase}")
+    for item in links:
+        for key in ["title", "category", "description", "url", "repo"]:
+            assert_true(item.get(key), f"missing {key} in link")
+    for required in ["README.md", "docs/SITE_MAP.md", "assets/home.js", "assets/style.css", ".github/workflows/pages.yml"]:
         assert_true((ROOT / required).exists(), f"missing {required}")
     forbidden = [
         "C:" + "\\Users",
@@ -44,7 +43,7 @@ def main() -> None:
         text = path.read_text(encoding="utf-8", errors="ignore")
         for marker in forbidden:
             assert_true(marker not in text, f"{marker} leaked in {path}")
-    print("OK: rebuilt 50 sites with distinct tool types, visual skins, archive links, source badges, and path hygiene.")
+    print("OK: archive-only website navigation verified; 50 generated sites are removed.")
 
 
 if __name__ == "__main__":
